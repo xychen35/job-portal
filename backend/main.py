@@ -1,10 +1,10 @@
 from fastapi import FastAPI
-from core.config import Settings
+from core.config import settings
 from db.base_class import Base
 from db.session import engine
 from fastapi.staticfiles import StaticFiles
 
-app = FastAPI(title=Settings.PROJECT_TITLE, version=Settings.PROJECT_VERSION)
+app = FastAPI(title=settings.PROJECT_TITLE, version=settings.PROJECT_VERSION)
 # app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
