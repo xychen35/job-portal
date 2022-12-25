@@ -1,15 +1,46 @@
 from fastapi import FastAPI
 from core.config import settings
-from db.base_class import Base
+from db.base import Base
 from db.session import engine
 from fastapi.staticfiles import StaticFiles
 
-app = FastAPI(title=settings.PROJECT_TITLE, version=settings.PROJECT_VERSION)
+# app = FastAPI(title=settings.PROJECT_TITLE, version=settings.PROJECT_VERSION)
 # app.mount("/static", StaticFiles(directory="static"), name="static")
 
+def create_tables():
+    Base.metadata.create_all(bind=engine)
 
-Base.metadata.create_all(engine)
+def start_application():
+    app = FastAPI(title=settings.PROJECT_TITLE, version=settings.PROJECT_VERSION)
+    create_tables()
+    return app
+
+app = start_application()
 
 @app.get('/')
 async def main():
+    pass
+
+@app.post('/users')
+async def create_user():
+    pass
+
+@app.post('/jobs/create-job')
+async def create_job():
+    pass
+
+@app.get('/jobs/get/{id}')
+async def read_job(id):
+    pass
+
+@app.get('/jobs/all')
+async def read_jobs():
+    pass
+
+@app.put('/jobs/update/{id}')
+async def update_job(id):
+    pass
+
+@app.delete('/jobs/delete/{id}')
+async def delete_job(id):
     pass
