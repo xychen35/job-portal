@@ -17,6 +17,7 @@ from apis.base import api_router
 def start_application():
     app = FastAPI()
     app.include_router(api_router)
+    return app
     
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test_db.db"
 engine = create_engine(
