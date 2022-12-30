@@ -19,31 +19,3 @@ def start_application():
     return app
 
 app = start_application()
-
-@app.get('/')
-async def main():
-    pass
-
-@app.post('/users')
-async def create_user():
-    pass
-
-@app.post('/jobs/create-job')
-async def create_job():
-    pass
-
-@app.get('/jobs/get/{id}')
-async def read_job(id):
-    pass
-
-@app.get('/jobs/all')
-async def read_jobs():
-    pass
-
-@app.put('/jobs/update/{id}')
-async def update_job(id):
-    pass
-
-@app.delete('/jobs/delete/{id}')
-async def delete_job(id):
-    pass
