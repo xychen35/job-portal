@@ -21,4 +21,6 @@ class Settings:
     ALGORITHM = "HS256"
     ACCESS_TOKEN_EXPIRES_MINUTES = 30
     
+    TEST_USER_EMAIL = "test@example.com"
+    
 settings = Settings()
