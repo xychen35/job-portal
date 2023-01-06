@@ -9,11 +9,11 @@ templates = Jinja2Templates(directory="templates")
 router = APIRouter(include_in_schema=False)
 
 @router.get("/")
-def home(request: Request, db: Session=Depends(get_db), msg: str = None):
+async def home(request: Request, db: Session=Depends(get_db), msg: str = None):
     jobs = retreive_all_jobs(db=db)
     return templates.TemplateResponse("jobs/homepage.html", {"request": request, "jobs": jobs, "msg": msg})
 
 @router.get("/detail/{id}")
-def job_detail(id: int, request: Request, db: Session=Depends(get_db)):
+async def job_detail(id: int, request: Request, db: Session=Depends(get_db)):
     job = retreive_job(id=id, db=db)
     return templates.TemplateResponse("jobs/detail.html", {"request": request, "job": job})
