@@ -12,6 +12,8 @@ from db.repository.jobs import create_new_job
 from apis.version1.route_login import get_current_user_from_token
 from fastapi.security.utils import get_authorization_scheme_param
 
+from apis.version1.route_jobs import list_jobs
+
 templates = Jinja2Templates(directory="templates")
 router = APIRouter(include_in_schema=False)
 
@@ -30,7 +32,7 @@ async def create_job(request: Request, db: Session=Depends(get_db)):
     return templates.TemplateResponse("jobs/create_job.html", {"request": request})
 
 @router.post("/post-a-job/")
-async def create_job(request: Request, db: Session = Depends(get_db)):
+async def create_job(request: Request, db: Session=Depends(get_db)):
     form = JobCreateForm(request)
     await form.load_data()
     if form.is_valid():
@@ -50,3 +52,8 @@ async def create_job(request: Request, db: Session = Depends(get_db)):
             )
             return templates.TemplateResponse("jobs/create_job.html", form.__dict__)
     return templates.TemplateResponse("jobs/create_job.html", form.__dict__)
+
+@router.get("/delete-job/")
+async def show_jobs_to_delete(request: Request, db: Session=Depends(get_db)):
+    jobs = await list_jobs(db=db)
+    return templates.TemplateResponse("jobs/show_jobs_to_delete.html", {"request": request, "jobs": jobs})

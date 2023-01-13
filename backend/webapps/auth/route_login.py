@@ -22,7 +22,7 @@ async def login(request: Request, db: Session=Depends(get_db)):
         try:
             form.__dict__.update(msg="Successfully Login :)")
             response = templates.TemplateResponse("auth/login.html", form.__dict__)
-            login_for_access_token(response=response, form_data=form, db=db)
+            await login_for_access_token(response=response, form_data=form, db=db)
             return response
         except HTTPException:
             form.__dict__.update(msg="")
