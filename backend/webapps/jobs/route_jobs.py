@@ -8,11 +8,13 @@ from db.session import get_db
 from webapps.jobs.forms import JobCreateForm
 from db.models.users import User
 from schemas.jobs import JobCreate
-from db.repository.jobs import create_new_job 
+from db.repository.jobs import create_new_job, search_job_by_title
 from apis.version1.route_login import get_current_user_from_token
 from fastapi.security.utils import get_authorization_scheme_param
 
 from apis.version1.route_jobs import list_jobs
+
+from typing import Optional
 
 templates = Jinja2Templates(directory="templates")
 router = APIRouter(include_in_schema=False)
@@ -20,7 +22,7 @@ router = APIRouter(include_in_schema=False)
 @router.get("/")
 async def home(request: Request, db: Session=Depends(get_db), msg: str = None):
     jobs = retreive_all_jobs(db=db)
-    return templates.TemplateResponse("jobs/homepage.html", {"request": request, "jobs": jobs, "msg": msg})
+    return templates.TemplateResponse("home/homepage.html", {"request": request, "jobs": jobs, "msg": msg})
 
 @router.get("/detail/{id}")
 async def job_detail(id: int, request: Request, db: Session=Depends(get_db)):
@@ -57,3 +59,8 @@ async def create_job(request: Request, db: Session=Depends(get_db)):
 async def show_jobs_to_delete(request: Request, db: Session=Depends(get_db)):
     jobs = await list_jobs(db=db)
     return templates.TemplateResponse("jobs/show_jobs_to_delete.html", {"request": request, "jobs": jobs})
+
+@router.get("/search/")
+async def search_job(request: Request, query: Optional[str] = None, db: Session=Depends(get_db)):
+    jobs = search_job_by_title(query=query, db=db)
+    return templates.TemplateResponse("home/homepage.html", {"request": request, "jobs": jobs})

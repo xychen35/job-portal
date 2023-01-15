@@ -1,6 +1,9 @@
 {% extends "base/base.html" %} {% block title %}
 <title>New Job-board</title>
 {% endblock %} {% block content %}
+  {% with msg=msg %}
+    {% include "components/alerts.html" %}
+  {% endwith %}
 <div class="container">
   <h1 class="display-4 text-danger">Find Jobs</h1>
 

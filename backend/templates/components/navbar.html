@@ -1,7 +1,12 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-        <img src="{{ url_for('static', path='images/logo.png')}}" alt="Jobboard navbar image", width="30", height="24">
+    <a class="navbar-brand" href="/">
+      <img
+        src="{{ url_for('static', path='images/logo.png') }}"
+        alt=""
+        width="30"
+        height="24"
+      />
     </a>
     <button
       class="navbar-toggler"
@@ -22,6 +27,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/docs/">Docs</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/redoc/">Redoc</a>
+        </li>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -30,22 +38,39 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Dropdown
+            Account
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="/register/">Sign-up</a></li>
+            <li>
+              <a class="dropdown-item" href="/losgin/">Login</a>
+            </li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Actions
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="/post-a-job/">Create a job post</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/delete-job/">Delete a job</a>
+            </li>
+          </ul>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      <form class="d-flex" role="search" action="/search/">
         <input
           class="form-control me-2"
+          name="query"
           type="search"
           placeholder="Search"
           aria-label="Search"
