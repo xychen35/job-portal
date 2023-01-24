@@ -1,32 +1,39 @@
-fastapi
-uvicorn
-
-#for databases
-sqlalchemy
-psycopg2
-
-# for env var
-python-dotenv
-
-#for email validation
-pydantic[email]
-
-#hashing
-passlib[bcrypt]
-
-#for testing       
-pytest
-requests
+aiofiles==22.1.0
+anyio==3.6.2
+attrs==22.2.0
+bcrypt==4.0.1
+certifi==2022.12.7
+charset-normalizer==3.0.1
+click==8.1.3
+coverage==7.0.5
+dnspython==2.3.0
+ecdsa==0.18.0
+email-validator==1.3.1
+exceptiongroup==1.1.0
+fastapi==0.89.1
+h11==0.14.0
+idna==3.4
+iniconfig==2.0.0
+Jinja2==3.1.2
+MarkupSafe==2.1.2
+packaging==23.0
+passlib==1.7.4
+pluggy==1.0.0
+psycopg2-binary==2.9.5
+pyasn1==0.4.8
+pydantic==1.10.4
+pytest==7.2.1
 pytest-cov==2.11.1
-
-#for jwt tokens
-python-jose
-
-#for form data
-python-multipart
-
-#for template
-jinja2
-
-#for static files
-aiofiles
+python-dotenv==0.21.1
+python-jose==3.3.0
+python-multipart==0.0.5
+requests==2.28.2
+rsa==4.9
+six==1.16.0
+sniffio==1.3.0
+SQLAlchemy==1.4.46
+starlette==0.22.0
+tomli==2.0.1
+typing_extensions==4.4.0
+urllib3==1.26.14
+uvicorn==0.20.0
