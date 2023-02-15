@@ -1,4 +1,4 @@
-# Job portal
+# Job Portal
 
 [![license](https://img.shields.io/github/license/peaceiris/actions-gh-pages.svg)](LICENSE)
 [![Profile](https://img.shields.io/badge/Dev-xychen35-blue)](https://github.com/xychen35)
